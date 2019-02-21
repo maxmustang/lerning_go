@@ -1,0 +1,62 @@
+go build - compila
+go run - roda um arquivo especifico
+go fmt - formata todo o codigo no diretorio
+go install - compila e instala um pacote
+go get -  baixa um pacote local
+go test - run test associado com o projeto
+
+
+package executable -> cria arquivos executaveis, todos os executaveis precisam ficar dentro do main
+package reusable -> libraries ou helpers
+
+tipos no go
+    bool
+    string
+    int
+    float64
+os tipos sao imutaveis
+
+
+go faz inferencia de tipos
+    var x string = "x" -> x := "x"
+
+variaveis podem ser declaradas fora de uma funcao mas nao podem ter valor associado a ela
+
+func x() string { //diz que a funcao retorna uma string, func x() {} é um void
+    return ""
+}
+
+
+arrays em go
+type array é uma lista de tamanho fixo
+type slice é uma lista de tamanho dinamico, todos precisam ser do mesmo tipo
+
+declaracao de slice 
+variavel = [] tipo { elementos dentro do slice }
+cards := []string{newCard(), newCard()}
+
+for index, obj := range cards { // := range cards significa que tem que pegar o slice de cards and fazer um loop nele
+
+}
+
+Go nao é orientado a objetos
+Em go é possivel criar o seu proprio tipo de variavel "extendendo" a antiga, podendo assim criar metodos especificos pra esse tipo
+
+type deck []string é exatamente um slice especifico pra Strings
+
+para adicionar um metodo ao nosso novo tipo, basta fazer
+
+func (d deck) print() {} diz que qualquer variavel do tipo deck tem acesso ao metodo print
+
+go permite que metodos tenham mais de um retorno(pair) para isso basta informar os tipos ao lado da chamada
+
+func x() (int, int) {
+    return 1, 2
+}
+
+as funcoes em go retornam error, entao é preciso recebe-las
+byteSlice, err := readFile("ahsud"), caso nao de erro, err sera nil(nulo)
+
+funcoes de test precisam comecar com TestXpto e receber um (t *testing.T)
+
+func TestNewDeck(t *testing.T) {}
